@@ -1,4 +1,14 @@
-# Paper.js - The Swiss Army Knife of Vector Graphics Scripting [![Build Status](https://travis-ci.org/paperjs/paper.js.svg?branch=develop)](https://travis-ci.org/paperjs/paper.js) [![NPM](https://img.shields.io/npm/v/paper.svg)](https://www.npmjs.com/package/paper)
+# Paper-es - ES modules forked Paper.js (The Swiss Army Knife of Vector Graphics Scripting)
+
+## usage
+
+```js
+import { paper } from "https://code4fukui.github.io/Paper-es/paper.js";
+
+paper.install(window);
+```
+
+## see also
 
 If you want to work with Paper.js, simply download the latest "stable" version
 from [http://paperjs.org/download/](http://paperjs.org/download/)
@@ -13,25 +23,6 @@ from [http://paperjs.org/download/](http://paperjs.org/download/)
   [`prebuilt/module`](https://github.com/paperjs/paper.js/tree/prebuilt/module)
   and [`prebuilt/dist`](https://github.com/paperjs/paper.js/tree/prebuilt/dist)
   branches.
-
-## Installing Paper.js
-
-The recommended way to install and maintain Paper.js as a dependency in your
-project is through the [Node.js Package Manager (NPM)](https://www.npmjs.com/)
-for browsers, Node.js or Electron.
-
-If NPM is already installed, simply type one of these commands in your project
-folder:
-
-```sh
-npm install paper
-```
-
-Upon execution, you will find a `paper` folder inside the project's
-`node_modules` folder.
-
-For more information on how to install Node.js and NPM, read the chapter
-[Installing Node.js and NPM](#installing-nodejs-and-npm).
 
 ### Which Version to Use
 
