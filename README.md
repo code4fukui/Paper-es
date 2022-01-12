@@ -8,6 +8,76 @@ import { paper } from "https://code4fukui.github.io/Paper-es/Paper.js";
 Paper.install(window);
 ```
 
+Paper.js is based on dist/paper-core.js (without PaperScript)
+
+## example
+
+```html
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>rounded-rectangles - Paper-es</title>
+<script type="module">
+import { Paper, Tool, Path, Rectangle } from "https://code4fukui.github.io/Paper-es/Paper.js";
+
+Paper.install(window); // -> project, tool, view
+
+window.onload = () => {
+	Paper.setup("canvas");
+
+	let mousePoint = view.center;
+	Paper.view.onMouseMove = (e) => {
+		mousePoint = e.point;
+	};
+
+	//const colors = ['red', 'white', 'blue', 'white'];
+	const colors = ["red", "orange", "yellow", "green", "aqua", "blue", "purple"];
+	const amount = colors.length * 3;
+	const size = 20;
+	for (let i = 0; i < amount; i++) {
+		const rect = new Rectangle([0, 0], [size, size]);
+		rect.center = mousePoint;
+		const path = new Path.Rectangle(rect, size / 4);
+		path.fillColor = colors[i % colors.length];
+		const scale = (1 - i / amount) * 20;
+		path.scale(scale);
+	}
+
+	const children = project.activeLayer.children;
+	Paper.view.onFrame = (e) => {
+		for (let i = 0; i < children.length; i++) {
+			const item = children[i];
+			const deltax = (mousePoint.x - item.position.x) / (i + 1);
+			const deltay = (mousePoint.y - item.position.y) / (i + 1);
+			item.rotate(Math.sin((e.count + i) / 8) * 7);
+			if (deltax * deltax + deltay * deltay > 0.1 * .1) {
+				item.position.x += deltax;
+				item.position.y += deltay;
+			}
+		}
+	}
+};
+</script>
+</head>
+<body>
+<h1>rounded-rectangles - Paper-es</h1>
+<canvas id="canvas" resize></canvas>
+
+<style>
+body {
+	margin: 0;
+	height: 100vh;
+	text-align: center;
+}
+canvas {
+	display: block;
+	width: 100%;
+	height: 80%;
+}
+</style>
+</body>
+
+</html>
+```
+
 ## see also
 
 If you want to work with Paper.js, simply download the latest "stable" version
