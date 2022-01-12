@@ -30,7 +30,7 @@
  *
  */
 
-var paper = function(self, undefined) {
+export const { paper, Tool, Path, Rectangle } = function(self, undefined) {
 
 self = self || require('./node/self.js');
 var window = self.window,
@@ -845,9 +845,12 @@ var PaperScope = Base.extend({
 				}
 			});
 		});
-		for (var key in this)
-			if (!/^_/.test(key) && this[key])
-				scope[key] = this[key];
+		/*
+		alert(self)
+		for (var key in self)
+			if (!/^_/.test(key) && self[key])
+				scope[key] = self[key];
+			*/
 	},
 
 	setup: function(element) {
@@ -15692,5 +15695,5 @@ if (typeof define === 'function' && define.amd) {
 	module.exports = paper;
 }
 
-return paper;
-}.call(this, typeof self === 'object' ? self : null);
+return { paper, Tool, Path, Rectangle };
+}.call(globalThis, typeof self === 'object' ? self : null);

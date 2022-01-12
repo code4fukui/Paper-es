@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load the Paper.js library -->
+<!-- Define inlined JavaScript -->
+<script type="module">
+import { paper, Tool, Path } from "./paper-core-es.js";
+
+paper.install(window);
+// Keep global references to both tools, so the HTML
+// links below can access them.
+
+window.onload = () => {
+	paper.setup("canvas");
+
+	// Create two drawing tools.
+	// tool1 will draw straight lines,
+	// tool2 will draw clouds.
+
+	const paths = [];
+
+	// Both share the mouseDown event:
+	let path;
+	function onMouseDown(e) {
+		path = new Path();
+		path.strokeColor = 'black';
+		path.add(e.point);
+		paths.push(path);
+	};
+
+	const tool1 = new Tool();
+	tool1.onMouseDown = onMouseDown;
+	tool1.onMouseDrag = function(e) {
+		if (path) {
+			path.add(e.point);
+		}
+	};
+	tool1.onMouseUp = (e) => {
+		path = null;
+	};
+	
+	const tool2 = new Tool();
+	tool2.minDistance = 20;
+	tool2.onMouseDown = onMouseDown;
+	tool2.onMouseDrag = function(e) {
+		// Use the arcTo command to draw cloudy lines
+		if (path) {
+			path.arcTo(e.point);
+		}
+	};
+	
+	const rect = new Path.Rectangle({
+		point: [10, 10],
+		size: [20, 20],
+		strokeColor: 'black'
+	});
+	
+	paper.view.onFrame = (event) => {
+		// Each frame, rotate the path by 3 degrees:
+		rect.rotate(3);
+		paths.forEach(p => p.rotate(.3));
+	};
+	btn1.onclick = () => {
+		tool1.activate();
+	};
+	btn2.onclick = () => {
+		tool2.activate();
+	};
+	tool2.activate();
+};
+</script>
+</head>
+<body>
+<h1>paper.js with JavaScript</h1>
+<canvas id="canvas" x-resize></canvas>
+<button id=btn1>Lines</button>
+<button id=btn2>Clouds</button>
+
+<style>
+body {
+	margin: 0;
+	height: 100vh;
+	text-align: center;
+}
+canvas {
+	display: block;
+	width: 100%;
+	height: 70%;
+}
+</style>
+</body>
+
+</html>
