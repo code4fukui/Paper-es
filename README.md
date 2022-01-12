@@ -3,9 +3,9 @@
 ## usage
 
 ```js
-import { paper } from "https://code4fukui.github.io/Paper-es/paper.js";
+import { paper } from "https://code4fukui.github.io/Paper-es/Paper.js";
 
-paper.install(window);
+Paper.install(window);
 ```
 
 ## see also
