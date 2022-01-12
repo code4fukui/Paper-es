@@ -77,6 +77,7 @@ canvas {
 
 </html>
 ```
+[Paper-es examples](https://code4fukui.github.io/Paper-es/)
 
 ## see also
 
