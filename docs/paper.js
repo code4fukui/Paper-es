@@ -30,7 +30,7 @@
  *
  */
 
-export const { paper, Tool, Path, Rectangle } = function(self, undefined) {
+export const { Paper, Tool, Path, Rectangle } = function(self, undefined) {
 
 self = self || require('./node/self.js');
 var window = self.window,
@@ -15695,5 +15695,6 @@ if (typeof define === 'function' && define.amd) {
 	module.exports = paper;
 }
 
-return { paper, Tool, Path, Rectangle };
+const Paper = paper;
+return { Paper, Tool, Path, Rectangle };
 }.call(globalThis, typeof self === 'object' ? self : null);

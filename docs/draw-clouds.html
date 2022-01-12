@@ -4,14 +4,14 @@
 <!-- Load the Paper.js library -->
 <!-- Define inlined JavaScript -->
 <script type="module">
-import { paper, Tool, Path } from "./paper.js";
+import { Paper, Tool, Path } from "./Paper.js";
 
-paper.install(window);
+Paper.install(window);
 // Keep global references to both tools, so the HTML
 // links below can access them.
 
 window.onload = () => {
-	paper.setup("canvas");
+	Paper.setup("canvas");
 
 	// Create two drawing tools.
 	// tool1 will draw straight lines,
@@ -55,7 +55,7 @@ window.onload = () => {
 		strokeColor: 'black'
 	});
 	
-	paper.view.onFrame = (event) => {
+	Paper.view.onFrame = (event) => {
 		// Each frame, rotate the path by 3 degrees:
 		rect.rotate(3);
 		paths.forEach(p => p.rotate(.3));
@@ -71,7 +71,7 @@ window.onload = () => {
 </script>
 </head>
 <body>
-<h1>paper.js with JavaScript</h1>
+<h1>Paper-es example</h1>
 <canvas id="canvas" x-resize></canvas>
 <button id=btn1>Lines</button>
 <button id=btn2>Clouds</button>

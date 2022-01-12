@@ -1,15 +1,15 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>rounded-rectangles - Paper-es</title>
 <script type="module">
-import { paper, Tool, Path, Rectangle } from "./paper.js";
+import { Paper, Tool, Path, Rectangle } from "./Paper.js";
 
-paper.install(window); // -> project, tool, view
+Paper.install(window); // -> project, tool, view
 
 window.onload = () => {
-	paper.setup("canvas");
+	Paper.setup("canvas");
 
 	let mousePoint = view.center;
-	paper.view.onMouseMove = (e) => {
+	Paper.view.onMouseMove = (e) => {
 		mousePoint = e.point;
 	};
 
@@ -27,7 +27,7 @@ window.onload = () => {
 	}
 
 	const children = project.activeLayer.children;
-	paper.view.onFrame = (e) => {
+	Paper.view.onFrame = (e) => {
 		for (let i = 0; i < children.length; i++) {
 			const item = children[i];
 			const deltax = (mousePoint.x - item.position.x) / (i + 1);
