@@ -30,7 +30,7 @@
  *
  */
 
-export const { Paper, Tool, Path, Rectangle } = function(self, undefined) {
+export const { Paper, Tool, Path, Rectangle, Point, Size, Curve } = function(self, undefined) {
 
 self = self || require('./node/self.js');
 var window = self.window,
@@ -13420,6 +13420,7 @@ new function() {
 				nativeMove = type === 'mousemove',
 				tool = this._scope.tool,
 				view = this;
+			hitItems = true; // add by @taisukef
 
 			function responds(type) {
 				return itemEvents.virtual[type] || view.responds(type)
@@ -13440,6 +13441,7 @@ new function() {
 				hitItem = hit && hit.item || null,
 				handle = false,
 				mouse = {};
+				//console.log("hit", hit, hit?.item, itemEvents.native[type], type, hitItems, inView)
 			mouse[type.substr(5)] = true;
 
 			if (hitItems && hitItem !== overItem) {
@@ -15696,5 +15698,5 @@ if (typeof define === 'function' && define.amd) {
 }
 
 const Paper = paper;
-return { Paper, Tool, Path, Rectangle };
+return { Paper, Tool, Path, Rectangle, Point, Size, Curve };
 }.call(globalThis, typeof self === 'object' ? self : null);
