@@ -3,7 +3,7 @@
 ## usage
 
 ```js
-import { paper } from "https://code4fukui.github.io/Paper-es/Paper.js";
+import { Paper } from "https://code4fukui.github.io/Paper-es/Paper.js";
 
 Paper.install(window);
 ```
@@ -24,7 +24,7 @@ window.onload = () => {
 	Paper.setup("canvas");
 
 	let mousePoint = view.center;
-	Paper.view.onMouseMove = (e) => {
+	view.onMouseMove = (e) => {
 		mousePoint = e.point;
 	};
 
@@ -42,7 +42,7 @@ window.onload = () => {
 	}
 
 	const children = project.activeLayer.children;
-	Paper.view.onFrame = (e) => {
+	view.onFrame = (e) => {
 		for (let i = 0; i < children.length; i++) {
 			const item = children[i];
 			const deltax = (mousePoint.x - item.position.x) / (i + 1);
