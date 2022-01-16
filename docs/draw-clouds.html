@@ -4,7 +4,8 @@
 <!-- Load the Paper.js library -->
 <!-- Define inlined JavaScript -->
 <script type="module">
-import { Paper, Tool, Path } from "./Paper.js";
+import { Paper, Tool, Path } from "https://code4fukui.github.io/Paper-es/Paper.js";
+//import { Paper, Tool, Path } from "./Paper.js";
 
 Paper.install(window);
 // Keep global references to both tools, so the HTML
@@ -30,7 +31,7 @@ window.onload = () => {
 
 	const tool1 = new Tool();
 	tool1.onMouseDown = onMouseDown;
-	tool1.onMouseDrag = function(e) {
+	tool1.onMouseDrag = (e) => {
 		if (path) {
 			path.add(e.point);
 		}
@@ -42,7 +43,7 @@ window.onload = () => {
 	const tool2 = new Tool();
 	tool2.minDistance = 20;
 	tool2.onMouseDown = onMouseDown;
-	tool2.onMouseDrag = function(e) {
+	tool2.onMouseDrag = (e) => {
 		// Use the arcTo command to draw cloudy lines
 		if (path) {
 			path.arcTo(e.point);
@@ -55,7 +56,7 @@ window.onload = () => {
 		strokeColor: 'black'
 	});
 	
-	Paper.view.onFrame = (event) => {
+	view.onFrame = (event) => {
 		// Each frame, rotate the path by 3 degrees:
 		rect.rotate(3);
 		paths.forEach(p => p.rotate(.3));
