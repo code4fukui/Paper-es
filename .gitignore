@@ -11,3 +11,7 @@
 !.yarn/sdks
 !.yarn/versions
 .pnp.js
+
+# meta-ops cleanup
+.DS_Store
+Thumbs.db
